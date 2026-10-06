@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GamingHub — Product Detail</title>
+  <script>
+    document.documentElement.setAttribute('data-theme', localStorage.getItem('gh-theme') || 'dark');
+    const _l = localStorage.getItem('gh-lang') || 'en';
+    document.documentElement.setAttribute('lang', _l);
+    document.documentElement.setAttribute('dir', _l === 'ar' ? 'rtl' : 'ltr');
+  </script>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/nav.css" />
+  <link rel="stylesheet" href="css/products.css" />
+</head>
+<body>
+
+  <div id="navbar-placeholder"></div>
+
+  <main>
+    <div id="detail-content"><!-- populated by JS --></div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/nav.js"></script>
+  <script>
+    const _params  = new URLSearchParams(window.location.search);
+    const _pid     = parseInt(_params.get('id'), 10);
+    const _product = PRODUCTS.find(p => p.id === _pid);
+
+    function renderDetail() {
+      const el = document.getElementById('detail-content');
+      if (!el) return;
+
+      if (!_product) {
+        el.innerHTML = `
+          <div class="page-header">
+            <div class="container"><h1>${t('detail.notfound.h')}</h1></div>
+          </div>
+          <section class="section">
+            <div class="container" style="text-align:center">
+              <p style="margin-bottom:24px">${t('detail.notfound.p')}</p>
+              <a href="products.html" class="btn btn-primary">${t('detail.notfound.btn')}</a>
+            </div>
+          </section>`;
+        return;
+      }
+
+      document.title = `GamingHub — ${_product.name}`;
+
+      const specs = Object.entries(_product.specs).map(([k,v]) =>
+        `<tr><td class="spec-key">${k}</td><td class="spec-val">${v}</td></tr>`
+      ).join('');
+
+      const tagKey = 'card.tag.' + _product.tag.toLowerCase().replace('-','');
+      el.innerHTML = `
+        <div class="page-header">
+          <div class="container">
+            <span class="badge badge--${_product.tag.toLowerCase().replace('-','')}">${t(tagKey)}</span>
+            <h1 style="margin-top:10px">${_product.name}</h1>
+          </div>
+        </div>
+        <section class="section">
+          <div class="container detail-grid">
+            <div class="detail-image-wrap">
+              <img src="${_product.image}" alt="${_product.name}" class="detail-image" onerror="this.src='assets/images/placeholder.svg'" />
+            </div>
+            <div class="detail-info">
+              <div class="detail-price">$${_product.price.toLocaleString()}</div>
+              <p class="detail-desc">${getDesc(_product)}</p>
+              <table class="specs-table">
+                <thead><tr><th colspan="2">${t('detail.specs')}</th></tr></thead>
+                <tbody>${specs}</tbody>
+              </table>
+              <div class="detail-actions">
+                <button class="btn btn-primary btn-lg" onclick="buyNow(${_product.id})">
+                  ${t('detail.buy')} — $${_product.price.toLocaleString()}
+                </button>
+                <a href="products.html" class="btn btn-secondary">${t('detail.back')}</a>
+              </div>
+            </div>
+          </div>
+        </section>`;
+    }
+
+    renderDetail();
+
+    // Re-render when language changes
+    window.onLangChange(function() {
+      renderDetail();
+    });
+
+    function buyNow(id) {
+      const product = PRODUCTS.find(p => p.id === id);
+      sessionStorage.setItem('order', JSON.stringify({
+        type: 'ready',
+        name: product.name,
+        price: product.price,
+        items: Object.entries(product.specs).map(([k,v]) => ({ label: k, value: v }))
+      }));
+      window.location.href = 'checkout.html';
+    }
+  </script>
+</body>
+</html>

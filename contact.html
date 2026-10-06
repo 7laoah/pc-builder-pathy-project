@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GamingHub — Contact Support</title>
+  <script>
+    document.documentElement.setAttribute('data-theme', localStorage.getItem('gh-theme') || 'dark');
+    const _l = localStorage.getItem('gh-lang') || 'en';
+    document.documentElement.setAttribute('lang', _l);
+    document.documentElement.setAttribute('dir', _l === 'ar' ? 'rtl' : 'ltr');
+  </script>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/nav.css" />
+  <link rel="stylesheet" href="css/contact.css" />
+</head>
+<body>
+
+  <div id="navbar-placeholder"></div>
+
+  <main>
+    <div class="page-header">
+      <div class="container">
+        <h1 data-i18n="contact.h1">Contact Support</h1>
+        <p data-i18n="contact.sub">Having a problem? We're here to help — 6 days a week.</p>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="container contact-layout">
+
+        <!-- Left: Form -->
+        <div class="contact-form-panel">
+          <h2 class="panel-title" data-i18n="contact.form.h">Send Us a Message</h2>
+
+          <form id="contact-form" novalidate>
+            <div class="form-group">
+              <label for="c-name"><span data-i18n="contact.name">Full Name</span> <span class="required">*</span></label>
+              <input type="text" id="c-name" class="form-control" placeholder="John Smith"
+                data-i18n-ph="contact.name" />
+              <span class="field-error" id="err-name"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="c-email"><span data-i18n="contact.email">Email Address</span> <span class="required">*</span></label>
+              <input type="email" id="c-email" class="form-control" placeholder="john@example.com" />
+              <span class="field-error" id="err-email"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="c-order">
+                <span data-i18n="contact.order">Order Number</span>
+                <span class="optional" data-i18n="optional">(optional)</span>
+              </label>
+              <input type="text" id="c-order" class="form-control" placeholder="e.g. GH-10042"
+                data-i18n-ph="contact.order.ph" />
+            </div>
+
+            <div class="form-group">
+              <label for="c-issue"><span data-i18n="contact.issue">Issue Type</span> <span class="required">*</span></label>
+              <select id="c-issue" class="form-control"
+                data-i18n-select='{"":"contact.issue.default","order":"contact.issue.order","technical":"contact.issue.tech","billing":"contact.issue.billing","other":"contact.issue.other"}'>
+                <option value="" data-i18n="contact.issue.default">— Select an issue type —</option>
+                <option value="order"     data-i18n="contact.issue.order">Order Issue</option>
+                <option value="technical" data-i18n="contact.issue.tech">Technical Problem</option>
+                <option value="billing"   data-i18n="contact.issue.billing">Billing</option>
+                <option value="other"     data-i18n="contact.issue.other">Other</option>
+              </select>
+              <span class="field-error" id="err-issue"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="c-message" style="display:flex;justify-content:space-between;align-items:center">
+                <span><span data-i18n="contact.msg">Message</span> <span class="required">*</span></span>
+                <span class="char-counter" id="msg-counter">0 / 20 min</span>
+              </label>
+              <textarea id="c-message" class="form-control" rows="5"
+                placeholder="Please describe your issue in detail (minimum 20 characters)..."
+                data-i18n-ph="contact.msg.ph"></textarea>
+              <span class="field-error" id="err-message"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg" style="width:100%" data-i18n="contact.send">
+              Send Message
+            </button>
+          </form>
+
+          <div class="success-banner hidden" id="contact-success">
+            <span class="success-icon">✅</span>
+            <h3 data-i18n="contact.success.h">Message Sent!</h3>
+            <p data-i18n="contact.success.p">Your message has been received. We'll respond within 24 hours.</p>
+          </div>
+        </div>
+
+        <!-- Right: Contact Info -->
+        <div class="contact-info-panel">
+          <h2 class="panel-title" data-i18n="contact.info.h">Get in Touch</h2>
+
+          <div class="contact-info-item">
+            <div class="contact-info-icon">📧</div>
+            <div>
+              <strong data-i18n="contact.email.label">Email</strong>
+              <p>support@gaminghub.com</p>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-info-icon">📞</div>
+            <div>
+              <strong data-i18n="contact.phone.label">Phone</strong>
+              <p dir="ltr">+966 11 234 5678</p>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-info-icon">🕐</div>
+            <div>
+              <strong data-i18n="contact.hours.label">Support Hours</strong>
+              <p data-i18n="contact.hours.val">Sunday – Thursday<br>9:00 AM – 6:00 PM AST</p>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-info-icon">📍</div>
+            <div>
+              <strong data-i18n="contact.hq.label">Headquarters</strong>
+              <p data-i18n="contact.hq.val">King Fahd Road, Al Olaya<br>Riyadh, Saudi Arabia</p>
+            </div>
+          </div>
+
+          <div class="contact-faq">
+            <h3 data-i18n="contact.links.h">Quick Links</h3>
+            <ul>
+              <li><a href="products.html" data-i18n="contact.links.browse">Browse Products</a></li>
+              <li><a href="build.html"    data-i18n="contact.links.builder">PC Builder</a></li>
+              <li><a href="checkout.html" data-i18n="contact.links.track">Track My Order</a></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/contact.js"></script>
+  <script src="js/nav.js"></script>
+</body>
+</html>

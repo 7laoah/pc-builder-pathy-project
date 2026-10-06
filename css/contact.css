@@ -1,0 +1,154 @@
+/* ===================================================
+   CONTACT PAGE STYLES
+   =================================================== */
+
+/* ---------------------------------------------------
+   Layout
+   --------------------------------------------------- */
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 48px;
+  align-items: start;
+}
+
+/* ---------------------------------------------------
+   Form Panel
+   --------------------------------------------------- */
+.contact-form-panel {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 36px 32px;
+  box-shadow: var(--shadow);
+}
+
+/* Required / optional labels */
+.required {
+  color: var(--error);
+  margin-left: 2px;
+}
+
+.optional {
+  color: var(--text-muted);
+  font-weight: 400;
+  font-size: 0.82rem;
+}
+
+/* Textarea */
+textarea.form-control {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* ---------------------------------------------------
+   Info Panel
+   --------------------------------------------------- */
+.contact-info-panel {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 36px 28px;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 84px;
+}
+
+.contact-info-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--bg);
+}
+
+.contact-info-item:last-of-type {
+  border-bottom: none;
+}
+
+.contact-info-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.contact-info-item strong {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 3px;
+}
+
+.contact-info-item p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* FAQ / Quick Links */
+.contact-faq {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 2px solid var(--border);
+}
+
+.contact-faq h3 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.contact-faq ul {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contact-faq ul li a {
+  font-size: 0.9rem;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color var(--transition);
+}
+
+.contact-faq ul li a:hover {
+  color: var(--accent-dark);
+  text-decoration: underline;
+}
+
+/* ---------------------------------------------------
+   Responsive
+   --------------------------------------------------- */
+@media (max-width: 960px) {
+  .contact-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-info-panel {
+    position: static;
+  }
+}
+
+/* ---------------------------------------------------
+   Character Counter
+   --------------------------------------------------- */
+.char-counter {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  transition: color var(--transition);
+}
+
+.char-counter.counter--ok {
+  color: var(--success);
+}
+
+.char-counter.counter--warn {
+  color: #f59e0b;
+}
+

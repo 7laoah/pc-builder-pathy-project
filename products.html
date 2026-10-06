@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GamingHub — Ready-Made PCs</title>
+  <script>
+    document.documentElement.setAttribute('data-theme', localStorage.getItem('gh-theme') || 'dark');
+    const _l = localStorage.getItem('gh-lang') || 'en';
+    document.documentElement.setAttribute('lang', _l);
+    document.documentElement.setAttribute('dir', _l === 'ar' ? 'rtl' : 'ltr');
+  </script>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/nav.css" />
+  <link rel="stylesheet" href="css/products.css" />
+</head>
+<body>
+
+  <div id="navbar-placeholder"></div>
+
+  <main>
+    <div class="page-header">
+      <div class="container">
+        <h1 data-i18n="products.h1">Ready-Made Gaming PCs</h1>
+        <p data-i18n="products.sub">Pre-built, tested, and ready to ship. Find the perfect rig for your budget.</p>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="container">
+        <!-- Filters -->
+        <div class="filter-bar">
+          <button class="filter-btn active" data-filter="all" data-i18n="filter.all">All</button>
+          <button class="filter-btn" data-filter="Budget" data-i18n="filter.budget">Budget</button>
+          <button class="filter-btn" data-filter="Mid-Range" data-i18n="filter.mid">Mid-Range</button>
+          <button class="filter-btn" data-filter="Flagship" data-i18n="filter.flagship">Flagship</button>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="product-grid" id="product-grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/nav.js"></script>
+  <script>
+    // Track active filter so re-renders preserve it
+    let _activeFilter = 'all';
+
+    function renderAndFilter() {
+      renderProductGrid('product-grid');
+      if (_activeFilter !== 'all') {
+        document.querySelectorAll('.product-card').forEach(card => {
+          card.style.display = card.dataset.tag === _activeFilter ? '' : 'none';
+        });
+      }
+    }
+
+    renderAndFilter();
+
+    // Filter buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        _activeFilter = btn.dataset.filter;
+        const cards = document.querySelectorAll('.product-card');
+        cards.forEach(card => {
+          const match = _activeFilter === 'all' || card.dataset.tag === _activeFilter;
+          card.style.display = match ? '' : 'none';
+        });
+      });
+    });
+
+    // Re-render cards when language changes
+    window.onLangChange(function() {
+      renderAndFilter();
+    });
+  </script>
+</body>
+</html>

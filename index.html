@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GamingHub — Build or Buy Your Dream PC</title>
+  <script>
+    document.documentElement.setAttribute('data-theme', localStorage.getItem('gh-theme') || 'dark');
+    const _l = localStorage.getItem('gh-lang') || 'en';
+    document.documentElement.setAttribute('lang', _l);
+    document.documentElement.setAttribute('dir', _l === 'ar' ? 'rtl' : 'ltr');
+  </script>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/nav.css" />
+  <link rel="stylesheet" href="css/home.css" />
+  <link rel="stylesheet" href="css/products.css" />
+</head>
+<body>
+
+  <div id="navbar-placeholder"></div>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero__overlay"></div>
+      <div class="container hero__content">
+        <span class="hero__label" data-i18n="home.label">The Ultimate Gaming Store</span>
+        <h1 class="hero__title" data-i18n="home.title">Build or Buy Your<br><span class="hero__accent">Dream Gaming PC</span></h1>
+        <p class="hero__sub" data-i18n="home.sub">Handpicked parts, live price estimates, and expert support — everything you need to game at the highest level.</p>
+        <div class="hero__ctas">
+          <a href="products.html" class="btn btn-primary btn-lg" data-i18n="home.cta.shop">Shop Ready PCs</a>
+          <a href="build.html" class="btn btn-secondary btn-lg" data-i18n="home.cta.build">Build Your Own</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section section--alt">
+      <div class="container">
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">🔩</div>
+            <h3 data-i18n="home.f1.title">Handpicked Parts</h3>
+            <p data-i18n="home.f1.text">Every component is selected for performance, reliability, and value. No filler — only the best.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">💰</div>
+            <h3 data-i18n="home.f2.title">Live Price Estimator</h3>
+            <p data-i18n="home.f2.text">Mix and match components and watch your total update instantly. No surprises at checkout.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🎧</div>
+            <h3 data-i18n="home.f3.title">Expert Support</h3>
+            <p data-i18n="home.f3.text">Our team of PC builders is available 6 days a week to answer questions and solve problems fast.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title" data-i18n="home.featured.title">Featured Builds</h2>
+        <p class="section-subtitle" data-i18n="home.featured.subtitle">Our most popular ready-made gaming rigs — ready to ship today.</p>
+        <div class="product-grid" id="featured-products"></div>
+        <div class="featured-cta">
+          <a href="products.html" class="btn btn-outline-accent" data-i18n="home.featured.all">View All Products →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="section cta-banner">
+      <div class="container cta-banner__inner">
+        <div>
+          <h2 data-i18n="home.cta.custom">Want something truly custom?</h2>
+          <p data-i18n="home.cta.custom.sub">Use our PC builder to choose every part and get an instant price estimate.</p>
+        </div>
+        <a href="build.html" class="btn btn-primary btn-lg" data-i18n="home.cta.start">Start Building →</a>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/nav.js"></script>
+  <script>
+    function renderFeatured() {
+      const featuredEl = document.getElementById('featured-products');
+      if (!featuredEl || typeof PRODUCTS === 'undefined') return;
+      featuredEl.innerHTML = PRODUCTS.slice(0, 3).map(buildFeaturedCard).join('');
+    }
+
+    renderFeatured();
+
+    // Re-render when language changes
+    window.onLangChange(function() {
+      renderFeatured();
+    });
+  </script>
+</body>
+</html>

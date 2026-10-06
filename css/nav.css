@@ -1,0 +1,439 @@
+/* ===================================================
+   NAV & FOOTER STYLES
+   =================================================== */
+
+/* ---------------------------------------------------
+   Navbar
+   --------------------------------------------------- */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #111111;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+
+/* Logo */
+.navbar__logo {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  direction: ltr;
+  unicode-bidi: embed;
+}
+
+.navbar__logo span {
+  color: var(--accent);
+}
+
+/* Nav links */
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.navbar__links a {
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: var(--radius);
+  transition: color var(--transition), background var(--transition);
+}
+
+.navbar__links a:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.08);
+}
+
+.navbar__links a.active {
+  color: var(--accent);
+  background: rgba(255, 69, 0, 0.1);
+}
+
+/* CTA button in nav */
+.navbar__links .nav-cta {
+  background: var(--accent);
+  color: #fff;
+  padding: 8px 18px;
+  border-radius: var(--radius);
+  font-weight: 600;
+}
+
+.navbar__links .nav-cta:hover {
+  background: var(--accent-dark);
+  color: #fff;
+}
+
+/* Hamburger */
+.navbar__hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 6px;
+  background: none;
+  border: none;
+}
+
+.navbar__hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  transition: all 0.25s ease;
+}
+
+.navbar__hamburger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.navbar__hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.navbar__hamburger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile nav */
+.navbar__mobile {
+  display: none;
+  flex-direction: column;
+  background: #1a1a1a;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 12px 24px 20px;
+}
+
+.navbar__mobile a {
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  transition: color var(--transition);
+}
+
+.navbar__mobile a:last-child {
+  border-bottom: none;
+}
+
+.navbar__mobile a:hover,
+.navbar__mobile a.active {
+  color: var(--accent);
+}
+
+.navbar__mobile.open {
+  display: flex;
+}
+
+/* ---------------------------------------------------
+   Footer
+   --------------------------------------------------- */
+.footer {
+  background: #111111;
+  color: rgba(255,255,255,0.65);
+  padding-block: 48px 24px;
+}
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: 24px;
+  margin-bottom: 40px;
+}
+
+.footer__brand .footer__logo {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #fff;
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 12px;
+  direction: ltr;
+  unicode-bidi: embed;
+}
+
+.footer__brand .footer__logo span {
+  color: var(--accent);
+}
+
+.footer__brand p {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  max-width: 240px;
+}
+
+.footer__col h4 {
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.footer__col ul {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.footer__col ul li a {
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  font-size: 0.88rem;
+  transition: color var(--transition);
+}
+
+.footer__col ul li a:hover {
+  color: var(--accent);
+}
+
+.footer__bottom {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: 24px;
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.footer__bottom a {
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+}
+
+.footer__bottom a:hover {
+  color: var(--accent);
+}
+
+/* ---------------------------------------------------
+   Responsive
+   --------------------------------------------------- */
+@media (max-width: 900px) {
+  .footer__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar__links {
+    display: none;
+  }
+
+  .footer__grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* ---------------------------------------------------
+   Theme Toggle Button
+   --------------------------------------------------- */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.07);
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  transition: background var(--transition), border-color var(--transition), transform var(--transition);
+  flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+  background: rgba(255,255,255,0.15);
+  border-color: rgba(255,255,255,0.4);
+  transform: scale(1.1);
+}
+
+.theme-toggle__icon {
+  pointer-events: none;
+  display: block;
+  line-height: 1;
+}
+
+/* On mobile the toggle sits beside the hamburger */
+.navbar__right-mobile {
+  display: none;
+  align-items: center;
+  gap: 8px;
+}
+
+.theme-toggle--mobile {
+  border-color: rgba(255,255,255,0.2);
+}
+
+/* ---------------------------------------------------
+   Light-mode overrides for navbar & footer
+   --------------------------------------------------- */
+[data-theme="light"] .navbar {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+[data-theme="light"] .navbar__logo {
+  color: #111111;
+}
+
+[data-theme="light"] .navbar__links a {
+  color: #444444;
+}
+
+[data-theme="light"] .navbar__links a:hover {
+  color: #111111;
+  background: rgba(0,0,0,0.05);
+}
+
+[data-theme="light"] .navbar__links a.active {
+  color: var(--accent);
+  background: rgba(255,69,0,0.08);
+}
+
+[data-theme="light"] .navbar__links .nav-cta {
+  background: var(--accent);
+  color: #fff;
+}
+
+[data-theme="light"] .theme-toggle {
+  border-color: rgba(0,0,0,0.15);
+  background: rgba(0,0,0,0.05);
+}
+
+[data-theme="light"] .theme-toggle:hover {
+  background: rgba(0,0,0,0.1);
+  border-color: rgba(0,0,0,0.25);
+}
+
+[data-theme="light"] .navbar__hamburger span {
+  background: #111111;
+}
+
+[data-theme="light"] .navbar__mobile {
+  background: #f8f8f8;
+  border-top-color: #e5e5e5;
+}
+
+[data-theme="light"] .navbar__mobile a {
+  color: #333333;
+  border-bottom-color: #e5e5e5;
+}
+
+[data-theme="light"] .footer {
+  background: #1a1a1a;
+}
+
+/* ---------------------------------------------------
+   Responsive update: show mobile group
+   --------------------------------------------------- */
+@media (max-width: 768px) {
+  .navbar__right-mobile {
+    display: flex;
+  }
+}
+
+
+/* ---------------------------------------------------
+   Language Toggle Button
+   --------------------------------------------------- */
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  min-width: 42px;
+  padding: 0 10px;
+  border-radius: 6px;
+  border: 2px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.07);
+  color: rgba(255,255,255,0.9);
+  font-family: var(--font);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition), color var(--transition);
+  flex-shrink: 0;
+}
+
+.lang-toggle:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+[data-theme="light"] .lang-toggle {
+  border-color: rgba(0,0,0,0.15);
+  background: rgba(0,0,0,0.05);
+  color: #333;
+}
+
+[data-theme="light"] .lang-toggle:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+/* ---------------------------------------------------
+   RTL Support
+   --------------------------------------------------- */
+[dir="rtl"] .navbar__inner {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .navbar__links {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .navbar__mobile a {
+  text-align: right;
+}
+
+[dir="rtl"] .footer__grid {
+  direction: rtl;
+}
+
+[dir="rtl"] .footer__bottom {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] body {
+  font-family: 'Segoe UI', 'Tahoma', system-ui, sans-serif;
+}
+

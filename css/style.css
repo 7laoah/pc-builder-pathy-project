@@ -1,0 +1,434 @@
+/* ===================================================
+   GLOBAL STYLES — Gaming PC Store
+   =================================================== */
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* ---------------------------------------------------
+   CSS Custom Properties
+   --------------------------------------------------- */
+/* ── Dark mode (default) ── */
+:root,
+[data-theme="dark"] {
+  --bg:           #161618;
+  --surface:      #1f1f22;
+  --surface-alt:  #2a2a2e;
+  --accent:       #FF4500;
+  --accent-dark:  #CC3700;
+  --accent-hover: #FF5722;
+  --text:         #F0F0F0;
+  --text-muted:   #9CA3AF;
+  --border:       #2e2e33;
+  --success:      #22c55e;
+  --error:        #f87171;
+  --tag-budget:   #22c55e;
+  --tag-mid:      #3b82f6;
+  --tag-flagship: #FF4500;
+
+  --radius:       8px;
+  --radius-lg:    14px;
+  --shadow:       0 2px 12px rgba(0,0,0,0.35);
+  --shadow-hover: 0 6px 24px rgba(0,0,0,0.55);
+  --max-width:    1200px;
+  --font:         'Inter', system-ui, -apple-system, sans-serif;
+  --transition:   0.2s ease;
+
+  /* hero-specific */
+  --hero-bg:        #0e0e10;
+  --hero-bg2:       #18181c;
+  --hero-text:      #ffffff;
+  --hero-sub:       rgba(255,255,255,0.62);
+  --page-header-bg: #111113;
+}
+
+/* ── Light mode ── */
+[data-theme="light"] {
+  --bg:           #F5F5F5;
+  --surface:      #FFFFFF;
+  --surface-alt:  #EFEFEF;
+  --accent:       #FF4500;
+  --accent-dark:  #CC3700;
+  --accent-hover: #FF5722;
+  --text:         #111111;
+  --text-muted:   #555555;
+  --border:       #DDDDDD;
+  --success:      #1A9E5A;
+  --error:        #D32F2F;
+  --tag-budget:   #1A9E5A;
+  --tag-mid:      #1565C0;
+  --tag-flagship: #FF4500;
+
+  --radius:       8px;
+  --radius-lg:    14px;
+  --shadow:       0 2px 12px rgba(0,0,0,0.08);
+  --shadow-hover: 0 6px 24px rgba(0,0,0,0.14);
+  --max-width:    1200px;
+  --font:         'Inter', system-ui, -apple-system, sans-serif;
+  --transition:   0.2s ease;
+
+  /* hero-specific */
+  --hero-bg:        #1a1a2e;
+  --hero-bg2:       #16213e;
+  --hero-text:      #ffffff;
+  --hero-sub:       rgba(255,255,255,0.72);
+  --page-header-bg: #111111;
+}
+
+/* ---------------------------------------------------
+   Reset & Base
+   --------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+main {
+  flex: 1;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* ---------------------------------------------------
+   Layout Utilities
+   --------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+
+.section {
+  padding-block: 72px;
+}
+
+.section--alt {
+  background: var(--surface);
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  margin-bottom: 48px;
+}
+
+/* ---------------------------------------------------
+   Buttons
+   --------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: var(--radius);
+  font-family: var(--font);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: background var(--transition), border-color var(--transition),
+              color var(--transition), box-shadow var(--transition), transform var(--transition);
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.btn-primary:hover {
+  background: var(--accent-dark);
+  border-color: var(--accent-dark);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(255, 69, 0, 0.35);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.btn-secondary:hover {
+  background: var(--surface);
+  border-color: var(--text);
+  color: var(--text);
+}
+
+.btn-outline-accent {
+  background: transparent;
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.btn-outline-accent:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+.btn-lg {
+  padding: 16px 36px;
+  font-size: 1.05rem;
+}
+
+.btn-sm {
+  padding: 8px 18px;
+  font-size: 0.85rem;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------
+   Form Elements
+   --------------------------------------------------- */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+  color: var(--text);
+}
+
+.form-control {
+  width: 100%;
+  padding: 11px 14px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  font-family: var(--font);
+  font-size: 0.95rem;
+  color: var(--text);
+  background: var(--surface);
+  transition: border-color var(--transition), box-shadow var(--transition);
+  outline: none;
+  appearance: none;
+}
+
+.form-control:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(255, 69, 0, 0.12);
+}
+
+.form-control.error {
+  border-color: var(--error);
+  box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1);
+}
+
+.field-error {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--error);
+  margin-top: 4px;
+  min-height: 18px;
+}
+
+select.form-control {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%239CA3AF' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 40px;
+}
+
+[data-theme="light"] select.form-control {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23555555' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+}
+
+/* ---------------------------------------------------
+   Cards
+   --------------------------------------------------- */
+.card {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-3px);
+}
+
+/* ---------------------------------------------------
+   Badge / Tag
+   --------------------------------------------------- */
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #fff;
+}
+
+.badge--budget   { background: var(--tag-budget); }
+.badge--mid      { background: var(--tag-mid); }
+.badge--flagship { background: var(--tag-flagship); }
+
+/* ---------------------------------------------------
+   Page Header (inner pages)
+   --------------------------------------------------- */
+.page-header {
+  background: var(--page-header-bg);
+  color: #fff;
+  padding-block: 56px 48px;
+  text-align: center;
+}
+
+.page-header h1 {
+  font-size: 2.4rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.page-header p {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.7);
+}
+
+/* ---------------------------------------------------
+   Divider
+   --------------------------------------------------- */
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin-block: 32px;
+}
+
+/* ---------------------------------------------------
+   Success Banner
+   --------------------------------------------------- */
+.success-banner {
+  background: rgba(34, 197, 94, 0.1);
+  border: 2px solid var(--success);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  text-align: center;
+}
+
+[data-theme="light"] .success-banner {
+  background: #E8F5E9;
+}
+
+.success-banner .success-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.success-banner h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--success);
+  margin-bottom: 8px;
+}
+
+.success-banner p {
+  color: var(--text-muted);
+}
+
+/* ---------------------------------------------------
+   Responsive helpers
+   --------------------------------------------------- */
+.hidden { display: none !important; }
+
+@media (max-width: 768px) {
+  .section { padding-block: 48px; }
+  .section-title { font-size: 1.6rem; }
+  .page-header h1 { font-size: 1.8rem; }
+}
+
+/* ---------------------------------------------------
+   RTL global layout support
+   --------------------------------------------------- */
+[dir="rtl"] .container {
+  text-align: right;
+}
+
+[dir="rtl"] .section-title,
+[dir="rtl"] .section-subtitle {
+  text-align: right;
+}
+
+[dir="rtl"] .btn {
+  direction: rtl;
+}
+
+[dir="rtl"] .form-group label {
+  text-align: right;
+}
+
+[dir="rtl"] .form-control {
+  text-align: right;
+  direction: rtl;
+}
+
+[dir="rtl"] .field-error {
+  text-align: right;
+}
+
+[dir="rtl"] .page-header {
+  direction: rtl;
+}
+

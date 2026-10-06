@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GamingHub — Build Your Own PC</title>
+  <script>
+    document.documentElement.setAttribute('data-theme', localStorage.getItem('gh-theme') || 'dark');
+    const _l = localStorage.getItem('gh-lang') || 'en';
+    document.documentElement.setAttribute('lang', _l);
+    document.documentElement.setAttribute('dir', _l === 'ar' ? 'rtl' : 'ltr');
+  </script>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/nav.css" />
+  <link rel="stylesheet" href="css/build.css" />
+</head>
+<body>
+
+  <div id="navbar-placeholder"></div>
+
+  <main>
+    <div class="page-header">
+      <div class="container">
+        <h1 data-i18n="build.h1">Build Your Own PC</h1>
+        <p data-i18n="build.sub">Choose each component and get an instant price estimate.</p>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="container build-layout">
+
+        <!-- Left: Component Pickers -->
+        <div class="build-pickers">
+          <h2 class="build-section-title" data-i18n="build.choose">Choose Your Components</h2>
+          <div id="component-pickers"><!-- populated by JS --></div>
+
+          <!-- Compatibility Panel (shown after selections) -->
+          <div class="compat-panel" id="compat-panel"></div>
+        </div>
+
+        <!-- Right: Summary & Price -->
+        <div class="build-sidebar">
+          <div class="build-summary-card">
+            <h3 class="summary-heading" data-i18n="build.your">Your Build</h3>
+            <ul class="summary-list" id="summary-list">
+              <li class="summary-empty">No components selected yet.</li>
+            </ul>
+            <hr class="divider" />
+            <div class="summary-total">
+              <span data-i18n="build.total">Estimated Total</span>
+              <strong id="total-price">$0</strong>
+            </div>
+            <button class="btn btn-primary btn-lg" id="checkout-btn" style="width:100%;margin-top:20px" data-i18n="build.checkout">
+              Proceed to Checkout →
+            </button>
+            <div class="missing-panel hidden" id="missing-panel"></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/build.js"></script>
+  <script src="js/nav.js"></script>
+  <script>
+    // Re-render build summary text when language changes
+    window.onLangChange(function() {
+      updateSummary();
+    });
+  </script>
+</body>
+</html>

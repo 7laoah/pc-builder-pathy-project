@@ -1,0 +1,244 @@
+/* ===================================================
+   CHECKOUT PAGE STYLES
+   =================================================== */
+
+/* ---------------------------------------------------
+   Layout
+   --------------------------------------------------- */
+.checkout-layout {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 40px;
+  align-items: start;
+}
+
+/* ---------------------------------------------------
+   Panel Title (shared)
+   --------------------------------------------------- */
+.panel-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 24px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--border);
+}
+
+/* ---------------------------------------------------
+   Order Summary Panel
+   --------------------------------------------------- */
+.order-summary-panel {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px 26px;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 84px;
+}
+
+.order-badge {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
+
+.order-badge--ready {
+  background: rgba(59, 130, 246, 0.15);
+  color: var(--tag-mid);
+}
+
+.order-badge--custom {
+  background: rgba(255, 69, 0, 0.12);
+  color: var(--accent);
+}
+
+[data-theme="light"] .order-badge--ready {
+  background: #E3F2FD;
+}
+
+[data-theme="light"] .order-badge--custom {
+  background: #FFF3E0;
+}
+
+.order-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 18px;
+}
+
+.order-specs-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.order-specs-table tbody tr {
+  border-bottom: 1px solid var(--bg);
+}
+
+.order-spec-key {
+  padding: 8px 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  width: 40%;
+  vertical-align: top;
+}
+
+.order-spec-val {
+  padding: 8px 0 8px 12px;
+  font-size: 0.85rem;
+  color: var(--text);
+  vertical-align: top;
+}
+
+.order-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 2px solid var(--border);
+}
+
+.order-total span {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.order-total strong {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+/* ---------------------------------------------------
+   Payment Panel
+   --------------------------------------------------- */
+.payment-panel {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px 26px;
+  box-shadow: var(--shadow);
+}
+
+/* Tab Pills */
+.payment-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 28px;
+  background: var(--bg);
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  font-family: var(--font);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.tab-btn.active {
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+}
+
+/* Tab Content */
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* Apple Pay */
+.apple-pay-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 28px 0 16px;
+  gap: 16px;
+}
+
+.apple-pay-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #000;
+  color: #fff;
+  border-radius: 10px;
+  padding: 16px 40px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: default;
+  width: 100%;
+  max-width: 320px;
+  user-select: none;
+}
+
+/* Card form row */
+.card-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* Demo note */
+.demo-note {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* ---------------------------------------------------
+   Responsive
+   --------------------------------------------------- */
+@media (max-width: 960px) {
+  .checkout-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .order-summary-panel {
+    position: static;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------------------------------------------------
+   Edit Build button (custom orders only)
+   --------------------------------------------------- */
+.edit-build-wrap {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.edit-build-btn {
+  width: 100%;
+  justify-content: center;
+  font-size: 0.88rem;
+}
+
